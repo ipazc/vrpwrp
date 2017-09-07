@@ -18,11 +18,14 @@ def get_file_binary_content(uri):
     return c
 
 def get_file_image(URI):
-    image = Image.open(URI).convert("RGB")
+    with Image.open(URI) as im:
+        image = im.convert("RGB")
     return image
 
 def get_image(image_bytes):
-    return Image.open(io.BytesIO(image_bytes)).convert("RGB")
+    with Image.open(io.BytesIO(image_bytes)) as im:
+        image = im.convert("RGB")
+    return
 
 def to_byte_array(pil_image):
     bytes_io = io.BytesIO()

@@ -5,11 +5,12 @@ import json
 from urllib.request import urlopen
 from vrpwrp.helpers import image_helper
 from vrpwrp.config import config
-from vrpwrp.tools.embedding import Embedding
+from vrpwrp.tools.embedding import Embedding, NUMPY_LOADED
 from vrpwrp.wrappers.APIWrapper import APIWrapper
 
 __author__ = 'Iván de Paz Centeno'
 
+NUMPY_AVAILABLE = NUMPY_LOADED
 
 class FaceRecognition(APIWrapper):
     """
@@ -46,7 +47,7 @@ class FaceRecognition(APIWrapper):
         :return: embedding string representing the image of the face.
         """
         response = self._request("GET", data=image_bytes, is_binary=True)['embedding_data']
-        embedding = Embedding(self, response['embedding'], response['val'])
+        embedding = Embedding(response['embedding'], self)
         return embedding
 
     def get_embeddings_from_file(self, filename):
@@ -81,7 +82,7 @@ class FaceRecognition(APIWrapper):
         """
         image_bytes = urlopen(url).read()
         response = self._request("GET", data=image_bytes, is_binary=True)['embedding_data']
-        embedding = Embedding(self, response['embedding'], response['val'])
+        embedding = Embedding(response['embedding'], self)
         return embedding
 
     def get_embedding_from_pil(self, pillow_image):
@@ -93,7 +94,7 @@ class FaceRecognition(APIWrapper):
         """
         image_bytes = image_helper.to_byte_array(pillow_image)
         response = self._request("GET", data=image_bytes, is_binary=True)['embedding_data']
-        embedding = Embedding(self, response['embedding'], response['val'])
+        embedding = Embedding(response['embedding'], self)
         return embedding
 
     def get_embeddings_distance(self, embedding1, embedding2):
@@ -117,7 +118,14 @@ class FaceRecognition(APIWrapper):
         :param embeddings_list: the list of embeddings to compare to.
         :return: an array of the distances between the embedding_who and each of the embeddings in the embeddings_list.
         """
-        data={'who': str(embedding_who), 'subjects': [str(embedding) for embedding in embeddings_list]}
-        values = self._request("PUT", data=json.dumps(data))['distances']
-        return [float(val) for val in values]
+        global NUMPY_AVAILABLE
+
+        if NUMPY_AVAILABLE:
+            result = [embedding_who - emb for emb in embeddings_list]
+        else:
+            data={'who': str(embedding_who), 'subjects': [str(embedding) for embedding in embeddings_list]}
+            values = self._request("PUT", data=json.dumps(data))['distances']
+            result = [float(val) for val in values]
+
+        return result
 
