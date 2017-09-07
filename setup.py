@@ -14,7 +14,7 @@ if sys.version_info < (3,4,1):
     sys.exit('Python < 3.4.1 is not supported!')
 
 setup(name='vrpwrp',
-      version='0.0.1',
+      version='0.0.2',
       description='Vision-algorithms Requests Processing Wrappers for deep-learning Computer Vision algorithms on the cloud.',
       long_description=readme(),
       url='http://github.com/ipazc/vrpwrp',
