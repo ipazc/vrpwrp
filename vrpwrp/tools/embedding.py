@@ -34,6 +34,12 @@ class Embedding(object):
     def get_embedding_np(self):
         return self.np_embedding
 
+    def __float__(self):
+        return float(str(self))
+
+    def __int__(self):
+        return int(float(self))
+
     def to_dict(self):
         return {"embedding": str(self.np_embedding), 'val': self.get_val()}
 
