@@ -15,6 +15,5 @@ install:
 # # command to run tests, e.g. python setup.py test
 script:
   - python3 setup.py nosetests --with-coverage --cover-package vrpwrp --verbosity=2 
-
-after_sucess:
-  coveralls
+after_success:
+  - coveralls
