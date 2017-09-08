@@ -9,6 +9,9 @@ VRPWRP (Vision-algorithm Requests Processing Wrappers) is a package that wraps a
     :target: https://travis-ci.org/ipazc/vrpwrp
 .. image:: https://coveralls.io/repos/github/ipazc/vrpwrp/badge.svg?branch=master
     :target: https://coveralls.io/github/ipazc/vrpwrp?branch=master
+.. image:: https://landscape.io/github/ipazc/vrpwrp/master/landscape.svg?style=flat
+   :target: https://landscape.io/github/ipazc/vrpwrp/master
+   :alt: Code Health
 
 
 
