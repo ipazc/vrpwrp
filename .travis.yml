@@ -10,6 +10,8 @@ python:
 # command to install dependencies
 install:
   - pip3 install -r requirements.txt
-# command to run tests
+  - pip3 install nose coverage
+  - pip3 install coveralls
+# # command to run tests, e.g. python setup.py test
 script:
-  - python3 setup.py nosetests --verbosity=2 # or py.test for Python versions 3.5 and below
+  - python3 setup.py nosetests --with-coverage --cover-package vrpwrp --verbosity=2 
