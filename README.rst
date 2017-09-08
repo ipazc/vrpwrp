@@ -7,6 +7,9 @@ VRPWRP (Vision-algorithm Requests Processing Wrappers) is a package that wraps a
     :target: https://badge.fury.io/py/vrpwrp
 .. image:: https://travis-ci.org/ipazc/vrpwrp.svg?branch=master
     :target: https://travis-ci.org/ipazc/vrpwrp
+.. image:: https://coveralls.io/repos/github/ipazc/vrpwrp/badge.svg?branch=master
+    :target: https://coveralls.io/github/ipazc/vrpwrp?branch=master
+
 
 
 Installation
