@@ -22,7 +22,8 @@ class FaceBundle(object):
         self.face_recognition = face_recognition
 
     def process_file(self, uri):
-        bounding_boxes = self.face_detection.analyze_file(uri)
+        image_bytes = image_helper.get_file_binary_content(uri)
+        bounding_boxes = self.face_detection.analyze_bytes(image_bytes)
         image = image_helper.get_image(image_bytes)
         cropped_images = [image_helper.crop_by_bbox(image, bb) for bb in bounding_boxes]
         embeddings = [self.face_recognition.get_embedding_from_pil(cropped).get_embedding_np() for cropped in cropped_images]
