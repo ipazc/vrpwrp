@@ -1,5 +1,5 @@
 ==============
-VRPWRP 0.0.3
+VRPWRP 0.0.4
 ==============
 VRPWRP (Vision-algorithm Requests Processing Wrappers) is a package that wraps an API-REST for Computer Vision deep-learning algorithms. Currently, it supports state-of-the-art a face-detection and face-recognition algorithms out-of-the-box. 
 
@@ -25,7 +25,8 @@ Currently it is only supported Python 3.4.1 onwards:
 
 Face detection
 ===============
-Face detection allows you to retrieve the location of faces inside images in the form of bounding boxes (left, top, width, height).
+Face detection allows you to retrieve the location of faces inside images in the form of bounding boxes (left, top, width, height). The algorihm is a deep-learning based algorithm, composed by a cascade of Convolutional Neural Networks. It is based on the paper *Zhang et al. (2016)* [ZHANG2016]_. 
+
 
 A simple example for retrieving the bounding boxes of faces from an image:
 
@@ -50,7 +51,9 @@ FaceDetection has methods for analyzing images also from bytes, URLs and pillow 
 
 Face Recognition
 ================
-Face recognition allows extracting the identity of a face within a given image of the face. The identity is a set of float numbers (since it is deep-learning-based, it is the output of the last convolution layer of a Convolutional Neural Network). In vrpwrp it is called **embeddings**.
+Face recognition allows extracting the identity of a face within a given image of the face. The identity is a set of float numbers (since it is deep-learning-based, it is the output of the last convolution layer of a Convolutional Neural Network). The algorithm is based on the papers *Schroff et al. (2015)*  [ZHANG2016]_, *Wen et al. (2016)* [WEN2016]_. and *Parkhi et al. (2015)* [PARKHI2015]_. 
+
+In vrpwrp, the identity of a face is also known as **embeddings**.
 
 A simple example for retrieving the embeddings of a face is:
 
@@ -103,4 +106,17 @@ Rather than using a loop (even if it is a list-comprehension), there is an optim
 
     new_embedding = face_recognition.get_embeddings_from_file("route/to/image_of_face1.jpg")
     distances = face_recognition.get_embeddings_distances(new_embedding, faces_embeddings)
+
+
+References
+==========
+
+.. [ZHANG2016] Zhang, K., Zhang, Z., Li, Z., and Qiao, Y. (2016). Joint face detection and alignment using multitask cascaded convolutional networks. IEEE Signal Processing Letters, 23(10):1499–1503.
+
+.. [SCHROFF2015] Schroff, F., Kalenichenko, D., & Philbin, J. (2015). Facenet: A unified embedding for face recognition and clustering. In Proceedings of the IEEE Conference on CVPR (pp. 815-823).
+
+.. [WEN2016] Wen, Y., Zhang, K., Li, Z., & Qiao, Y. (2016, October). A discriminative feature learning approach for deep face recognition. In ECCV (pp. 499-515). Springer International Publishing.
+
+.. [PARKHI2015]  Parkhi, O. M., Vedaldi, A., & Zisserman, A. (2015, September). Deep Face Recognition. In BMVC (Vol. 1, No. 3, p. 6).
+
 
