@@ -75,7 +75,7 @@ class TestEmbedding(unittest.TestCase):
 
     def test_substract_with_numpy(self):
         """
-        Test the substraction of two embeddings to calculate the distance with numpy.
+        Tests the substraction of two embeddings to calculate the distance with numpy.
         """
         if NUMPY_AVAILABLE:
             EMB.NUMPY_LOADED = True
@@ -93,7 +93,7 @@ class TestEmbedding(unittest.TestCase):
 
     def test_substract_without_numpy(self):
         """
-        Test the substraction of two embeddings to calculate the distance without numpy.
+        Tests the substraction of two embeddings to calculate the distance without numpy.
         """
         EMB.NUMPY_LOADED = False
         FACEREC.NUMPY_AVAILABLE = False

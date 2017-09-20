@@ -16,7 +16,7 @@ class TestFaceDetection(unittest.TestCase):
         Tests the detection of faces from a file.
         """
         face_detection = FaceDetection()
-        bounding_boxes = face_detection.analyze_file("vrpwrp/examples/subject3_3.jpg")
+        bounding_boxes = face_detection.analyze_file("vrpwrp/samples/subject3_3.jpg")
         self.assertEqual(len(bounding_boxes), 1)
 
 

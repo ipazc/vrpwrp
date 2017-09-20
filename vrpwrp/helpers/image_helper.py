@@ -38,7 +38,7 @@ def get_image(image_bytes):
     :param image_bytes: bytes to convert into a PIL image.
     :return: PIL image.
     """
-    with Image.open(io.BytesIO(image_bytes)) as im:
+    with io.BytesIO(image_bytes) as bytes_io, Image.open(bytes_io) as im:
         image = im.convert("RGB")
     return image
 
@@ -104,8 +104,8 @@ def segment_image(pil_image, segment_width, segment_height, iteration_order=HORI
 
                 yield crop_by_bbox(pil_image, bounding_box)
     else:
-        for y in range(horizontal_segment_count):
-            for x in range(vertical_segment_count):
+        for y in range(vertical_segment_count):
+            for x in range(horizontal_segment_count):
                 bounding_box = BoundingBox(x * segment_width, y * segment_height,
                                            min(segment_width, width - x * segment_width),
                                            min(segment_height, height - y * segment_height))

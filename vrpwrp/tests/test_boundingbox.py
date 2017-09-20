@@ -23,7 +23,7 @@ class TestBoundingBox(unittest.TestCase):
 
     def test_expand(self):
         """
-        Expansion of bounding box.
+        Tests the expansion of bounding box.
         """
         box1 = BoundingBox(3,3,100,100)
         box1.expand() # expand a default of 20%
@@ -32,7 +32,7 @@ class TestBoundingBox(unittest.TestCase):
 
     def test_bounding_box_from_string(self):
         """
-        Create a bounding box from a string.
+        Tests the creation a bounding box from a string.
         """
         bbox_string = "22,34,122,432"
         bbox = BoundingBox.from_string(bbox_string)
@@ -64,7 +64,7 @@ class TestBoundingBox(unittest.TestCase):
 
     def test_fit_in_size(self):
         """
-        Bounding box is able to adapt itself to specified bounds.
+        Tests that bounding box is able to adapt itself to specified bounds.
         """
         image_size = [300, 300]
 
@@ -100,21 +100,21 @@ class TestBoundingBox(unittest.TestCase):
 
     def test_get_box(self):
         """
-        Bounding box successfully returns the array of the box dimensions.
+        Tests that bounding box successfully returns the array of the box dimensions.
         """
         box = BoundingBox(15, 16, 17, 18)
         self.assertEqual(box.get_box(), [15, 16, 17, 18])
 
     def test_get_box_coord(self):
         """
-        Bounding box successfully returns the array of the box in coordinates version.
+        Tests that bounding box successfully returns the array of the box in coordinates version.
         """
         box = BoundingBox(15, 16, 17, 18)
         self.assertEqual(box.get_box_coord(), [[15, 16], [32, 16], [15, 34], [32, 34]])
 
     def test_get_components(self):
         """
-        Bounding box isolated components are accessible.
+        Tests that bounding box isolated components are accessible.
         """
         box = BoundingBox(15, 16, 17, 18)
         self.assertEqual(box.get_x(), 15)
@@ -124,21 +124,21 @@ class TestBoundingBox(unittest.TestCase):
 
     def test_get_numpy_format(self):
         """
-        Bounding box numpy format is correct.
+        Tests that bounding box numpy format is correct.
         """
         box = BoundingBox(15, 16, 17, 18)
         self.assertEqual(box.get_numpy_format(), [16, 34, 15, 32])
 
     def test_str(self):
         """
-        Bounding box describes itself correctly.
+        Tests that bounding box describes itself correctly.
         """
         box = BoundingBox(15, 16, 17, 18)
         self.assertEqual(box.__str__(), "[15, 16, 17, 18]")
 
     def test_intersection_with_other_boundingbox(self):
         """
-        Bounding box intersects itself with other bounding boxes.
+        Tests that bounding box intersects itself with other bounding boxes.
         """
         for rect_set in self.rect_sets:
             rect1 = rect_set[0]
@@ -164,14 +164,14 @@ class TestBoundingBox(unittest.TestCase):
 
     def test_center(self):
         """
-        Bounding box knows its center point.
+        Tests that bounding box knows its center point.
         """
         box = BoundingBox(10, 10, 20, 20)
         self.assertEqual(box.get_center(), [20, 20])
 
     def test_area(self):
         """
-        Bounding box knows its area.
+        Tests that bounding box knows its area.
         """
         box = BoundingBox(10, 10, 20, 20)
         self.assertEqual(box.get_area(), 400)

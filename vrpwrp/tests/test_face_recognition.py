@@ -26,7 +26,7 @@ class TestFaceRecognition(unittest.TestCase):
         Tests the extraction of an embedding from a file.
         """
         face_recognition = FaceRecognition()
-        embedding = face_recognition.get_embeddings_from_file("vrpwrp/examples/subject3_3.jpg")
+        embedding = face_recognition.get_embeddings_from_file("vrpwrp/samples/subject3_3.jpg")
         self.assertTrue(type(embedding) is Embedding)
 
     def test_get_embeddings_distances_with_numpy(self):

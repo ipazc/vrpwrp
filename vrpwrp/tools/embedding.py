@@ -34,8 +34,8 @@ class Embedding(object):
             else:
                 self.np_embedding = np_embedding
 
-        elif emb_type is np.ndarray:
-            self.np_embedding = np_embedding # For sure Numpy is loaded in this case. No need to check.
+        elif NUMPY_LOADED and emb_type is np.ndarray:
+            self.np_embedding = np_embedding
 
         elif emb_type is list:
             if NUMPY_LOADED:
