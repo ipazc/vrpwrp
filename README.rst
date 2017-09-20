@@ -51,7 +51,7 @@ FaceDetection has methods for analyzing images also from bytes, URLs and pillow 
 
 Face Recognition
 ================
-Face recognition allows extracting the identity of a face within a given image of the face. The identity is a set of float numbers (since it is deep-learning-based, it is the output of the last convolution layer of a Convolutional Neural Network). The algorithm is based on the papers *Schroff et al. (2015)*  [ZHANG2016]_, *Wen et al. (2016)* [WEN2016]_. and *Parkhi et al. (2015)* [PARKHI2015]_. 
+Face recognition allows extracting the identity of a face within a given image of the face. The identity is a set of float numbers (since it is deep-learning-based, it is the output of the last convolution layer of a Convolutional Neural Network). The algorithm is based on the papers *Schroff et al. (2015)*  [SCHROFF2015]_, *Wen et al. (2016)* [WEN2016]_. and *Parkhi et al. (2015)* [PARKHI2015]_. 
 
 In vrpwrp, the identity of a face is also known as **embeddings**.
 
