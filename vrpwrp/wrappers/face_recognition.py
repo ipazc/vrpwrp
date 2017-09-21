@@ -12,6 +12,7 @@ __author__ = 'Iván de Paz Centeno'
 
 NUMPY_AVAILABLE = NUMPY_LOADED
 
+
 class FaceRecognition(APIWrapper):
     """
     Wrapper for FaceRecognition API, from Iván de Paz Centeno API-REST service.
@@ -27,7 +28,7 @@ class FaceRecognition(APIWrapper):
 
         super().__init__(API_URL)
 
-    def get_embedding_from_bytes(self, image_bytes):
+    def get_embeddings_from_bytes(self, image_bytes):
         """
         Retrieves the face embedding for the given raw array of bytes of an image file.
 
@@ -70,10 +71,9 @@ class FaceRecognition(APIWrapper):
         :return: embedding string representing the image of the face.
         """
         image_bytes = image_helper.get_file_binary_content(filename)
+        return self.get_embeddings_from_bytes(image_bytes)
 
-        return self.get_embedding_from_bytes(image_bytes)
-
-    def get_embedding_from_url(self, url):
+    def get_embeddings_from_url(self, url):
         """
         Retrieves the face embedding for the image hosted in the given url.
 
@@ -81,11 +81,9 @@ class FaceRecognition(APIWrapper):
         :return: embedding string representing the image of the face.
         """
         image_bytes = urlopen(url).read()
-        response = self._request("GET", data=image_bytes, is_binary=True)['embedding_data']
-        embedding = Embedding(response['embedding'], self)
-        return embedding
+        return self.get_embeddings_from_bytes(image_bytes)
 
-    def get_embedding_from_pil(self, pillow_image):
+    def get_embeddings_from_pil(self, pillow_image):
         """
         Retrieves the face embedding for the given pillow image.
 
@@ -93,9 +91,7 @@ class FaceRecognition(APIWrapper):
         :return: embedding string representing the image of the face.
         """
         image_bytes = image_helper.to_byte_array(pillow_image)
-        response = self._request("GET", data=image_bytes, is_binary=True)['embedding_data']
-        embedding = Embedding(response['embedding'], self)
-        return embedding
+        return self.get_embeddings_from_bytes(image_bytes)
 
     def get_embeddings_distance(self, embedding1, embedding2):
         """

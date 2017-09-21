@@ -75,7 +75,6 @@ class FaceDetection(APIWrapper):
         :return: list of bounding boxes detected inside the image.
         """
         image_bytes = image_helper.get_file_binary_content(filename)
-
         return self.analyze_bytes(image_bytes)
 
     def analyze_url(self, url):
@@ -87,8 +86,7 @@ class FaceDetection(APIWrapper):
         """
 
         image_bytes = urlopen(url).read()
-        bounding_boxes = self.analyze_bytes(image_bytes)
-        return bounding_boxes
+        return self.analyze_bytes(image_bytes)
 
     def analyze_pil(self, pillow_image):
         """
@@ -99,5 +97,4 @@ class FaceDetection(APIWrapper):
         """
 
         image_bytes = image_helper.to_byte_array(pillow_image)
-        bounding_boxes = self.analyze_bytes(image_bytes)
-        return bounding_boxes
+        return self.analyze_bytes(image_bytes)
