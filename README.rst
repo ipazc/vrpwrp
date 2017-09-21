@@ -1,7 +1,7 @@
 ==============
 VRPWRP 0.0.4
 ==============
-VRPWRP (Vision-algorithm Requests Processing Wrappers) is a package that wraps an API-REST for Computer Vision deep-learning algorithms. Currently, it supports state-of-the-art a face-detection and face-recognition algorithms out-of-the-box. 
+VRPWRP (Vision-algorithm Requests Processing Wrappers) is a package that wraps an API-REST for Computer Vision deep-learning algorithms. Currently, it supports state-of-the-art face-detection and face-recognition algorithms out-of-the-box. 
 
 .. image:: https://badge.fury.io/py/vrpwrp.svg
     :target: https://badge.fury.io/py/vrpwrp
