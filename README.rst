@@ -25,7 +25,7 @@ Currently it is only supported Python 3.4.1 onwards:
 
 Face detection
 ===============
-Face detection allows you to retrieve the location of faces inside images in the form of bounding boxes (left, top, width, height). The algorihm is a deep-learning based algorithm, composed by a cascade of Convolutional Neural Networks. It is based on the paper *Zhang et al. (2016)* [ZHANG2016]_. 
+Face detection allows you to retrieve the location of faces inside images in the form of bounding boxes (left, top, width, height). The algorihm is a deep-learning based algorithm, composed by a cascade of Convolutional Neural Networks. It is based on the paper *Zhang et al. (2016)* [ZHANG2016]_. The backend runs a **Caffe-based** MTCNN influenced by `this python MTCNN version <https://github.com/DuinoDu/mtcnn>`_ . 
 
 
 A simple example for retrieving the bounding boxes of faces from an image:
@@ -51,7 +51,7 @@ FaceDetection has methods for analyzing images also from bytes, URLs and pillow 
 
 Face Recognition
 ================
-Face recognition allows extracting the identity of a face within a given image of the face. The identity is a set of float numbers (since it is deep-learning-based, it is the output of the last convolution layer of a Convolutional Neural Network). The algorithm is based on the papers *Schroff et al. (2015)*  [SCHROFF2015]_, *Wen et al. (2016)* [WEN2016]_. and *Parkhi et al. (2015)* [PARKHI2015]_. 
+Face recognition allows extracting the identity of a face within a given image of the face. The identity is a set of float numbers (since it is deep-learning-based, it is the output of the last convolution layer of a Convolutional Neural Network). The algorithm is based on the papers *Schroff et al. (2015)*  [SCHROFF2015]_, *Wen et al. (2016)* [WEN2016]_. and *Parkhi et al. (2015)* [PARKHI2015]_. The backend is influenced by `Facenet <https://github.com/davidsandberg/facenet>`_, using TensorFlow.
 
 In vrpwrp, the identity of a face is also known as **embeddings**.
 
