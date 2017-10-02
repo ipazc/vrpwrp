@@ -201,6 +201,12 @@ class BoundingBox(object):
         """
         return json.dumps(self.to_dict())
 
+    def __repr__(self):
+        """
+        :return: representation string to display in console directly, rather than "BoundingBox object".
+        """
+        return "BoundingBox: {}".format(self.to_dict())
+
     @classmethod
     def from_string(cls, bounding_box_string):
         """
