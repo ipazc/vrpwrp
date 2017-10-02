@@ -89,4 +89,13 @@ class Embedding(object):
         return {"embedding": str(self.np_embedding)}
 
     def __str__(self):
+        """
+        :return: String representation of the object.
+        """
         return str(self.get_embedding_np())
+
+    def __repr__(self):
+        """
+        :return: Representation of the object in the python interpreter
+        """
+        return str(self)
