@@ -7,7 +7,7 @@ from setuptools import setup, setuptools
 __author__ = 'Iván de Paz Centeno'
 
 def readme():
-    with open('README.rst') as f:
+    with open('README.rst', encoding="UTF-8") as f:
         return f.read()
 
 if sys.version_info < (3, 4, 1):
